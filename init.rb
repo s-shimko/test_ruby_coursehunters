@@ -1,4 +1,4 @@
-require_relative "store_application"
+require_relative "app/store_application"
 
 StoreApplication.config do |app|
   app.name = 'My Store'
@@ -11,10 +11,10 @@ StoreApplication.config do |app|
   end
 end
 
-p StoreApplication.environment
-p StoreApplication.name
-p StoreApplication::Admin.email
-p StoreApplication::Admin.login
+unless StoreApplication.frozen?
+  StoreApplication.name = "13213"
+end
+
 
 @items = []
 @items << AntiqueItem.new('car', price: 101, weight: 99)
@@ -36,6 +36,10 @@ cart.add_item RealItem.new(:price => 101, :weight => 99, :name => "kettle")
 # method = 'all_cars'
 # puts cart.send(method) # with -send- can call method as string
 
+# order = Order.new
+# @items.each { |i| order.add_item(i) }
+# order.place
+
 order = Order.new
-@items.each { |i| order.add_item(i) }
 order.place
+p order.placed_at.strftime('%b %-d, %Y %H:%M:%S')

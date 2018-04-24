@@ -4,7 +4,7 @@ class StoreApplication
       unless @instance
         yield(self)
         puts 'loading files...'
-        require "pony"
+        # require "pony"
         require_relative "string"
         require_relative "item_container"
         require_relative "item"
@@ -15,6 +15,7 @@ class StoreApplication
         require_relative "order"
       end
       @instance ||= self
+      @instance.freeze
     end
 
     attr_accessor :name, :environment
@@ -33,6 +34,7 @@ class StoreApplication
           yield(self)
         end
         @instance ||= self
+        @instance.freeze
       end
 
       attr_accessor :email, :login
