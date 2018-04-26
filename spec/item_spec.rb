@@ -23,4 +23,8 @@ describe Item do
     expect(@item.to_s).to eq("kettle:212.0")
   end
 
+  it 'calculates tax' do
+    expect(@item.send(:tax)).not_to be_nil # use send cause tax is private
+  end
+
 end

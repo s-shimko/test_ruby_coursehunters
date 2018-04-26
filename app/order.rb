@@ -11,6 +11,7 @@ class Order
 
   def place
     @placed_at = Time.now
+    # mock = муляж класса или объекта для эмуляции Pony
   #   thr = Thread.new do
   #   Pony.mail(:to => :"sergey1shimko@gmail.com",
   #             :from => "mrjeeee@gmail.com",
